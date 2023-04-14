@@ -3,7 +3,10 @@ def print_recipe():
         print(recipe)
 
 def print_details():
-    name = input("Please enter a recipe name to get it's details:\n>> ")
+    try:
+        name = input("Please enter a recipe name to get it's details:\n>> ")
+    except EOFError:
+        return
     try:
         coockbook[name]
     except:
@@ -14,7 +17,10 @@ def print_details():
         print("\tTake %i minutes of cooking.\n"%coockbook[name]["prep_time"])
 
 def del_recipe():
-    name = input("Please enter a recipe name to delete it:\n>> ")
+    try:
+        name = input("Please enter a recipe name to delete it:\n>> ")
+    except EOFError:
+        return
     try:
        del  coockbook[name]
     except:
@@ -24,26 +30,38 @@ def del_recipe():
 
 def add_recipe():
     ingredients = []
-    recipe = input(">>> Enter a name:\n")
+    try:
+        recipe = input(">>> Enter a name:\n")
+    except EOFError:
+        return
     print(">>> Enter ingredients:")
     while 42:
-        line = input()
+        try:
+            line = input()
+        except EOFError:
+            break
         if line == "":
             break
         ingredients.append(line)
-    meal = input(">>> Enter a meal type:\n")
+    try:
+         meal = input(">>> Enter a meal type:\n")
+    except:
+        return
     print(">>> Enter a preparation time:")
     while 42:
-        line = input()
         try:
-            line = int(line)
-        except ValueError:
+            line = input()
+        except EOFError:
             print(">>> Please insert an integer:")
         else:
-            prep_time = line
-            break
+            try:
+                line = int(line)
+            except ValueError:
+                print(">>> Please insert an integer:")
+            else:
+                prep_time = line
+                break
     coockbook[recipe] = {'ingredients':ingredients, 'meal':meal, 'prep_time':prep_time}
-    print(coockbook)
 
 def print_help():
     print("List of available option:\n\t1: Add a recipe\n\t2: Delete a recipe")
@@ -61,7 +79,11 @@ if __name__=='__main__':
     print("Welcome to the Python Cookbook !")
     f_list[4]()
     while 42:
-        choose = input("\nPlease select an option:\n>>> ")
+        try:
+            choose = input("\nPlease select an option:\n>>> ")
+        except EOFError:
+            print("\nCookbook closed. Goodbye !")
+            break
         try:
             choose = int(choose) - 1
         except ValueError:
