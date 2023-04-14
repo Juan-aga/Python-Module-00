@@ -5,8 +5,13 @@ import sys
 def text_analyzer(text=""):
     """\n\tThis function counts the number of upper characters, lower characters,\n\tpunctuation and spaces in a given text."""
     if (text == ""):
-        text_analyzer(input("What is the text to analyze?\n>> "))
-        return
+        while 42:
+            try:
+                text_analyzer(input("What is the text to analyze?\n>> "))
+            except EOFError:
+               return
+            else:
+               return
     if (not isinstance(text, str)):
          print("argument is not a string")
          return
