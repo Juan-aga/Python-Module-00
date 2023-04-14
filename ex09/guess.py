@@ -10,7 +10,7 @@ if __name__ == "__main__":
         try:
             r = input("What's your guess between 1 and 99?\n>> ")
             count += 1
-        except EOFError:
+        except:
             print("\nGoodbye!")
             break
         try:

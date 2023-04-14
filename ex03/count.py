@@ -8,7 +8,7 @@ def text_analyzer(text=""):
         while 42:
             try:
                 text_analyzer(input("What is the text to analyze?\n>> "))
-            except EOFError:
+            except:
                return
             else:
                return

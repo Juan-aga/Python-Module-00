@@ -5,7 +5,7 @@ def print_recipe():
 def print_details():
     try:
         name = input("Please enter a recipe name to get it's details:\n>> ")
-    except EOFError:
+    except:
         return
     try:
         coockbook[name]
@@ -19,7 +19,7 @@ def print_details():
 def del_recipe():
     try:
         name = input("Please enter a recipe name to delete it:\n>> ")
-    except EOFError:
+    except:
         return
     try:
        del  coockbook[name]
@@ -32,13 +32,13 @@ def add_recipe():
     ingredients = []
     try:
         recipe = input(">>> Enter a name:\n")
-    except EOFError:
+    except:
         return
     print(">>> Enter ingredients:")
     while 42:
         try:
             line = input()
-        except EOFError:
+        except:
             break
         if line == "":
             break
@@ -51,7 +51,7 @@ def add_recipe():
     while 42:
         try:
             line = input()
-        except EOFError:
+        except:
             print(">>> Please insert an integer:")
         else:
             try:
@@ -81,7 +81,7 @@ if __name__=='__main__':
     while 42:
         try:
             choose = input("\nPlease select an option:\n>>> ")
-        except EOFError:
+        except:
             print("\nCookbook closed. Goodbye !")
             break
         try:
