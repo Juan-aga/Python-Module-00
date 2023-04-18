@@ -30,6 +30,8 @@ if __name__ == "__main__":
                 else:
                     print("Congratulations! You got it on your first try!")
                 break
+            elif r < 1 or r > 99:
+                print("The number mus't be between 1 and 99")
             elif r < secret:
                 print("Too low!")
             elif r > secret:
