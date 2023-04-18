@@ -2,9 +2,9 @@ import string
 import sys
 
 
-def text_analyzer(text=""):
+def text_analyzer(text=None):
     """\n\tThis function counts the number of upper characters, lower characters,\n\tpunctuation and spaces in a given text."""
-    if (text == ""):
+    if (text == None):
         while 42:
             try:
                 text_analyzer(input("What is the text to analyze?\n>> "))
