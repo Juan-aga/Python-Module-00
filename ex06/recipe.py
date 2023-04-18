@@ -30,19 +30,25 @@ def del_recipe():
 
 def add_recipe():
     ingredients = []
-    try:
-        recipe = input(">>> Enter a name:\n")
-    except:
-        return
+    while 42:
+    	try:
+            recipe = input(">>> Enter a name:\n")
+    	except:
+            return
+    	if recipe == "":
+    		continue
+    	else:
+    		break
     print(">>> Enter ingredients:")
     while 42:
         try:
             line = input()
         except:
             break
-        if line == "":
+        if line == "" and ingredients:
             break
-        ingredients.append(line)
+        if line:
+            ingredients.append(line)
     try:
          meal = input(">>> Enter a meal type:\n")
     except:
@@ -59,8 +65,11 @@ def add_recipe():
             except ValueError:
                 print(">>> Please insert an integer:")
             else:
-                prep_time = line
-                break
+                if line <= 0:
+                    print(">>> Please the time must be grather than 0")
+                else:
+                    prep_time = line
+                    break
     coockbook[recipe] = {'ingredients':ingredients, 'meal':meal, 'prep_time':prep_time}
 
 def print_help():
