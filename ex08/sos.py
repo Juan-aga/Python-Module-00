@@ -25,4 +25,5 @@ if  __name__ == "__main__":
     encoded = ""
     for char in mes:
         encoded += (morse[char.upper()] + " ")    
-    print(encoded[:-2])
+    if encoded != "":
+    	print(encoded[:-2])
